@@ -1,4 +1,8 @@
 steps:
+  - name: 'maven:3-jdk-8'
+    args:
+      - package
+    entrypoint: mvn
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/organic-victory-319314/live-reload:v1.0', '.']
   - name: 'gcr.io/cloud-builders/docker'
