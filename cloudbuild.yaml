@@ -9,5 +9,5 @@ steps:
     args: ['push', 'gcr.io/organic-victory-319314/live-reload:v1.0']
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['beta','run','deploy','live-reload','--image=gcr.io/organic-victory-319314/live-reload:v1.0', '--region=us-central1']
-  images:
+images:
   - gcr.io/organic-victory-319314/live-reload:v1.0
