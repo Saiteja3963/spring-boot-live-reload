@@ -7,8 +7,13 @@ steps:
     args: ['build', '-t', 'gcr.io/organic-victory-319314/live-reload:v1.0', '.']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/organic-victory-319314/live-reload:v1.0']
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
-    args: ['run', 'deploy', 'live-reload', '--image', 'gcr.io/organic-victory-319314/live-reload:v1.0', '--region', 'us-central1', '--platform', 'managed']
-images:
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: [
+        'set',
+        'image',
+        'deployment',
+        'live-reload',
+        'live-reload=gcr.io/organic-victory-319314/live-reload:v1.0'
+    ]
+  images:
   - gcr.io/organic-victory-319314/live-reload:v1.0
